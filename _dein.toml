@@ -1,33 +1,43 @@
-# 基本は github.com のレポジトリーを指定するだけ
-[[plugins]]
+# 基本 github.com のレポジトリーを指定するだけ
+[[plugins]] #プラグインマネージャー
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
+[[plugins]] #vimで非同期処理ができるようになる
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+# 要検証======================
+[[plugins]] #
+repo = 'Shougo/neocomplcache.vim'
 
-[[plugins]]
+[[plugins]] #関数補完
+repo = 'Shougo/neosnippet'
+
+[[plugins]] #Default snippets files
+repo = 'Shougo/neosnippet-snippets'
+# ============================
+
+[[plugins]] #最近開いたファイル、カレントディレクトリ・バッファのファイルを一覧表示
 repo = 'Shougo/unite.vim'
 
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-depends = ['Shougo/unite.vim']
-
-[[plugins]]
+[[plugins]] #ディレクトリをツリー表示
 repo = 'scrooloose/nerdtree'
 
-[[plugins]]
+[[plugins]] #メソッド、変数、定数の一覧表示
 repo = 'vim-scripts/taglist.vim'
 
+[[plugins]] #Vimの中でGitを利用できる
+repo = 'tpope/vim-fugitive'
+
+[[plugins]] #ステータスラインの強化
+repo = 'itchyny/lightline.vim'
+
 [[plugins]] # カラースキーマ
+# colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
+# 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
   set background=dark
-  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
   au MyAutoCmd VimEnter * nested colorscheme hybrid
 '''
 
