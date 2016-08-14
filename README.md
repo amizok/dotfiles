@@ -1,37 +1,27 @@
-#git clone
-git clone git@github.com:kei-amishima/dotfiles.git ~/dotfiles
-
-#make .cache directory
-mkdir ~/.cache
-
-#make Symbolic-link
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/.dein.toml ~/.dein.toml
-ln -s ~/dotfiles/.dein_lazy.toml ~/.dein_lazy.toml
 Name
 ====
 
+## make .cache directory
+mkdir ~/.cache
+
+## make Symbolic-link
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.dein.toml ~/.dein.toml
+ln -s ~/dotfiles/.dein_lazy.toml ~/.dein_lazy.toml
+
 Overview
-
-## Description
-
-## Demo
-
-## VS. 
-
-## Requirement
 
 ## Usage
 
 ## Install
+git clone git@github.com:kei-amishima/dotfiles.git ~/dotfiles
 
 ## Contribution
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[kei-amishima](https://github.com/kei-amishima)
 
