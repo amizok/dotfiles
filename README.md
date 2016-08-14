@@ -14,7 +14,7 @@ Overview
 ## Usage
 
 ## Install
-git clone git@github.com:kei-amishima/dotfiles.git ~/dotfiles
+`git clone git@github.com:kei-amishima/dotfiles.git ~/dotfiles`
 
 ## Contribution
 
