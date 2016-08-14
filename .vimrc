@@ -59,7 +59,16 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 " 拡張子で読み込みタグ変更
 au BufNewFile,BufRead *.php set tags+=$HOME/php.tags
 " tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]> 
+nnoremap <C-]> g<C-]>
+
+" taglist =================================
+:set tag=tags
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_Show_One_File    = 1 " 現在表示中のファイルのみのタグしか表示しない
+let Tlist_Use_Right_Window = 1 " 右側にtag listのウインドうを表示する
+let Tlist_Exit_OnlyWindow  = 1 " taglistのウインドウだけならVimを閉じる
+" \lでtaglistウインドウを開いたり閉じたり出来るショートカット
+map <silent> <leader>l :TlistToggle<CR>
 
 " neosnippet ==============================
 " Plugin key-mappings.
@@ -85,8 +94,8 @@ endif
 let g:unite_enable_start_insert = 1
 
 " 大文字小文字を区別しない
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
+let g:unite_enable_ignore_case  = 1
+let g:unite_enable_smart_case   = 1
 
 " grep検索
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
@@ -99,18 +108,10 @@ nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_command       = 'ag'
+  let g:unite_source_grep_default_opts  = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
-
-" taglist =================================
-:set tags=tags
-let Tlist_Show_One_File = 1      " 現在表示中のファイルのみのタグしか表示しない
-let Tlist_Use_Right_Window = 1   " 右側にtag listのウインドうを表示する
-let Tlist_Exit_OnlyWindow = 1    " taglistのウインドウだけならVimを閉じる
-" \lでtaglistウインドウを開いたり閉じたり出来るショートカット
-map <silent> <leader>l :TlistToggle<CR>
 
 " alias ===================================
 :command Tr NERDTree
