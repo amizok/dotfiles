@@ -1,4 +1,4 @@
-Name
+My Setting Files
 ====
 
 ## Usage
@@ -12,6 +12,7 @@ Name
 	ln -s ~/dotfiles/.vimrc ~/.vimrc
 	ln -s ~/dotfiles/.dein.toml ~/.dein.toml
 	ln -s ~/dotfiles/.dein_lazy.toml ~/.dein_lazy.toml
+	ln -s ~/dotfiles/.ctags ~/.ctags
 
 ## Contribution
 
