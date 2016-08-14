@@ -17,8 +17,11 @@ repo = 'Shougo/neosnippet'
 repo = 'Shougo/neosnippet-snippets'
 # ============================
 
-[[plugins]] #最近開いたファイル、カレントディレクトリ・バッファのファイルを一覧表示
+[[plugins]] #統合ユーザインターフェース
 repo = 'Shougo/unite.vim'
+
+[[plugins]] #the_silver_searcherプラグイン
+repo = 'rking/ag.vim'
 
 [[plugins]] #ディレクトリをツリー表示
 repo = 'scrooloose/nerdtree'

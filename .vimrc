@@ -48,7 +48,7 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 " deleteキーが効かない対応
 set backspace=indent,eol,start
 
-set t_Co=256
+set t_Co=256        " 256色を使う
 
 " ヤンクをクリップボードへ送り込む
 set clipboard+=unnamed
@@ -80,6 +80,30 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" unite.vim ===============================
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 " taglist =================================
 :set tags=tags
 let Tlist_Show_One_File = 1      " 現在表示中のファイルのみのタグしか表示しない
@@ -87,16 +111,6 @@ let Tlist_Use_Right_Window = 1   " 右側にtag listのウインドうを表示�
 let Tlist_Exit_OnlyWindow = 1    " taglistのウインドウだけならVimを閉じる
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
 map <silent> <leader>l :TlistToggle<CR>
-
-" vim-indent-guides =======================
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup = 1
-" 自動カラー無効
-let g:indent_guides_auto_colors=0
-" 奇数番目のインデントの色
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=234
-" 偶数番目のインデントの色
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
 
 " alias ===================================
 :command Tr NERDTree
