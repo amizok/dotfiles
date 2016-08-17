@@ -6,17 +6,6 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-# 要検証======================
-[[plugins]] #
-repo = 'Shougo/neocomplcache.vim'
-
-[[plugins]] #関数補完
-repo = 'Shougo/neosnippet'
-
-[[plugins]] #Default snippets files
-repo = 'Shougo/neosnippet-snippets'
-# ============================
-
 [[plugins]] #統合ユーザインターフェース
 repo = 'Shougo/unite.vim'
 
@@ -28,6 +17,12 @@ repo = 'scrooloose/nerdtree'
 
 [[plugins]] #メソッド、変数、定数の一覧表示
 repo = 'vim-scripts/taglist.vim'
+
+[[plugins]] #左端にgitの差分を表示する
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]] #vimのjkを早くする
+repo = 'rhysd/accelerated-jk'
 
 [[plugins]] #Vimの中でGitを利用できる
 repo = 'tpope/vim-fugitive'
