@@ -1,5 +1,5 @@
 "==========================================
-" プラグイン管理(dein.vim)
+" プラグインセットアップ(dein.vim)
 "==========================================
 if !&compatible
   set nocompatible
@@ -167,7 +167,7 @@ if executable('ag')
 endif
 
 "--------------------------------
-" vim-fugitive'
+" vim-fugitive
 "--------------------------------
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
@@ -190,6 +190,73 @@ let g:gitgutter_max_signs = 500
 " j/kによる移動を速くする
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
+
+"--------------------------------
+" lightline.vim
+"--------------------------------
+let g:lightline = {
+     \ 'colorscheme': 'default',
+     \ 'active': {
+     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+     \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+     \ },
+     \ 'component_function': {
+     \   'fugitive': 'LightLineFugitive',
+     \   'filename': 'LightLineFilename',
+     \   'fileformat': 'LightLineFileformat',
+     \   'filetype': 'LightLineFiletype',
+     \   'fileencoding': 'LightLineFileencoding',
+     \   'mode': 'LightLineMode',
+     \   'ctrlpmark': 'CtrlPMark',
+     \ },
+     \ 'component_expand': {
+     \   'syntastic': 'SyntasticStatuslineFlag',
+     \ },
+     \ 'component_type': {
+     \   'syntastic': 'error',
+     \ },
+     \ 'subseparator': { 'left': '|', 'right': '|' }
+     \ }
+function! LightLineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+    return fugitive#head()
+  else
+    return ''
+  endif
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 "==========================================
 " alias
