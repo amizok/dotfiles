@@ -35,27 +35,75 @@ endif
 " -------------------------------
 
 "==========================================
-" 画面表示の設定
+" 各種オプションの設定
 "==========================================
-syntax on           " コードに色をつける
-set number          " 行番号を表示する
-set cursorline      " カーソル行の背景色を変える
-set laststatus=2    " ステータス行を常に表示
-set cmdheight=2     " メッセージ表示欄を2行確保
-set showmatch       " 対応する括弧を強調表示
-set helpheight=999  " ヘルプを画面いっぱいに開く
-set tabstop=4
-set list            " 不可視文字を表示
-set t_Co=256        " 256色を使う
+set title                     " ターミナルにファイル名を表示
+set number                    " 行番号を表示する
+set cursorline                " カーソル行の背景色を変える
+set laststatus=2              " ステータス行を常に表示
+set cmdheight=2               " メッセージ表示欄を2行確保
+set showmatch                 " 対応する括弧を強調表示
+set helpheight=999            " ヘルプを画面いっぱいに開く
+
+" 検索系
+set hlsearch                  " 検索結果をハイライト
+" ESC連打でハイライト解除
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" タブの設定
+set expandtab                 " タブ入力を複数の空白入力に置き換える
+set tabstop=4                 " タブ文字の表示幅
+set shiftwidth=4              " Vimが挿入するインデントの幅
+
+syntax on                     " 構文毎に文字色を変化させる
+set t_Co=256                  " 256色を使う
+set list                      " 不可視文字を表示
 " 不可視文字の表示記号指定
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
-" deleteキーが効かない対応
-set backspace=indent,eol,start
 
-" ヤンクをクリップボードへ送り込む
-set clipboard+=unnamed
+set backspace=indent,eol,start " deleteキーが効かない対応
+set whichwrap=b,s,h,l,<,>,[,]  " カーソルを行頭、行末で止まらないようにする
+set clipboard+=unnamed         " ヤンクをクリップボードへ送り込む
+
 " ステータスにファイル情報表示
 set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
+
+" マッピング
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 "==========================================
 " 各プラグインの設定

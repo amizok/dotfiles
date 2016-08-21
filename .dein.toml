@@ -9,17 +9,20 @@ build = 'make'
 [[plugins]] #統合ユーザインターフェース
 repo = 'Shougo/unite.vim'
 
-[[plugins]] #the_silver_searcherプラグイン
+[[plugins]] #the_silver_searcher(grepより早いgrep検索)
 repo = 'rking/ag.vim'
 
 [[plugins]] #ディレクトリをツリー表示
 repo = 'scrooloose/nerdtree'
 
+[[plugins]] #NEADTreeをタブ間で共有
+repo = 'jistr/vim-nerdtree-tabs'
+
 [[plugins]] #メソッド、変数、定数の一覧表示
 repo = 'vim-scripts/taglist.vim'
 
-[[plugins]] #左端にgitの差分を表示する
-repo = 'airblade/vim-gitgutter'
+[[plugins]] #Xdebug用のプラグイン
+repo = 'joonty/vdebug'
 
 [[plugins]] #vimのjkを早くする
 repo = 'rhysd/accelerated-jk'
@@ -27,10 +30,19 @@ repo = 'rhysd/accelerated-jk'
 [[plugins]] #Vimの中でGitを利用できる
 repo = 'tpope/vim-fugitive'
 
+[[plugins]] #サブモードを定義
+repo = 'kana/vim-submode'
+
+[[plugins]] #インデントラインを表示
+repo = 'Yggdroot/indentLine'
+
+[[plugins]] #左端にgitの差分を表示する
+repo = 'airblade/vim-gitgutter'
+
 [[plugins]] #ステータスラインの強化
 repo = 'itchyny/lightline.vim'
 
-[[plugins]] # カラースキーマ
+[[plugins]] #カラースキーマ
 # colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
 # 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
 repo = 'w0ng/vim-hybrid'
