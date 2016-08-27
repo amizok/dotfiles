@@ -42,6 +42,9 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]] #ステータスラインの強化
 repo = 'itchyny/lightline.vim'
 
+[[plugins]] #help日本語化
+repo = 'vim-jp/vimdoc-ja'
+
 [[plugins]] #カラースキーマ
 # colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
 # 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。

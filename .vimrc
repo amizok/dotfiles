@@ -54,9 +54,15 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set expandtab                 " タブ入力を複数の空白入力に置き換える
 set tabstop=4                 " タブ文字の表示幅
 set shiftwidth=4              " Vimが挿入するインデントの幅
+set softtabstop=4
+set autoindent
+set smartindent
+
+set visualbell t_vb=          " Beep音を消す
 
 syntax on                     " 構文毎に文字色を変化させる
 set t_Co=256                  " 256色を使う
+
 set list                      " 不可視文字を表示
 " 不可視文字の表示記号指定
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
@@ -95,6 +101,7 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+nnoremap Y y$
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
@@ -136,7 +143,7 @@ noremap <C-P> :Unite buffer<CR>
 " ファイル一覧
 noremap <C-N> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
+noremap <C-Q> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
