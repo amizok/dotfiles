@@ -42,6 +42,9 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]] #ステータスラインの強化
 repo = 'itchyny/lightline.vim'
 
+[[plugins]] #文章整形用プラグイン
+repo = 'h1mesuke/vim-alignta'
+
 [[plugins]] #help日本語化
 repo = 'vim-jp/vimdoc-ja'
 

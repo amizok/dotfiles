@@ -268,5 +268,5 @@ endfunction
 "==========================================
 " alias
 "==========================================
-:command Tr NERDTree
+:command Tr NERDTreeTabsToggle
 
