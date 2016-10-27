@@ -24,6 +24,9 @@ repo = 'jistr/vim-nerdtree-tabs'
 [[plugins]] #メソッド、変数、定数の一覧表示
 repo = 'vim-scripts/taglist.vim'
 
+[[plugins]] #gtags
+repo = 'vim-scripts/gtags.vim'
+
 [[plugins]] #Vimの中でGitを利用できる
 repo = 'tpope/vim-fugitive'
 

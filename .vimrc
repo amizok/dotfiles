@@ -66,6 +66,8 @@ set t_Co=256                  " 256色を使う
 set list                      " 不可視文字を表示
 " 不可視文字の表示記号指定
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+" スワップファイルを作成しない
+:set noswapfile
 
 set backspace=indent,eol,start " deleteキーが効かない対応
 set whichwrap=b,s,h,l,<,>,[,]  " カーソルを行頭、行末で止まらないようにする
@@ -132,6 +134,24 @@ let Tlist_Use_Right_Window = 1 " 右側にtag listのウインドうを表示す
 let Tlist_Exit_OnlyWindow  = 1 " taglistのウインドウだけならVimを閉じる
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
 map <silent> <leader>l :TlistToggle<CR>
+
+"--------------------------------
+" GNU GLOBAL(gtags)
+"--------------------------------
+"検索結果Windowを閉じる
+nmap <C-q> <C-w><C-w><C-w>q
+"ソースコードの grep
+nmap <C-g> :Gtags -g
+"このファイルの関数一覧
+nmap <C-l> :Gtags -f %<CR>
+"カーソル以下の定義元を探す
+nmap <C-j> :Gtags <C-r><C-w><CR>
+"カーソル以下の使用箇所を探す
+nmap <C-k> :Gtags -r <C-r><C-w><CR>
+"次の検索結果へジャンプする
+nmap <C-n> :cn<CR>
+"前の検索結果へジャンプする
+nmap <C-p> :cp<CR>
 
 "--------------------------------
 " unite.vim
