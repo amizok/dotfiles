@@ -51,12 +51,17 @@ repo = 'h1mesuke/vim-alignta'
 [[plugins]] #help日本語化
 repo = 'vim-jp/vimdoc-ja'
 
-[[plugins]] #カラースキーマ
+#カラースキーマ
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'brendonrapp/smyck-vim'
+
 # colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
 # 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
-repo = 'w0ng/vim-hybrid'
 hook_add = '''
   set background=dark
-  au MyAutoCmd VimEnter * nested colorscheme hybrid
+  au MyAutoCmd VimEnter * nested colorscheme smyck
 '''
 

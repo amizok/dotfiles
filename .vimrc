@@ -139,7 +139,7 @@ map <silent> <leader>l :TlistToggle<CR>
 " GNU GLOBAL(gtags)
 "--------------------------------
 "検索結果Windowを閉じる
-nmap <C-q> <C-w><C-w><C-w>q
+nmap <C-x> <C-w><C-w><C-w>q
 "ソースコードの grep
 nmap <C-g> :Gtags -g
 "このファイルの関数一覧
