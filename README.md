@@ -1,18 +1,17 @@
-My Setting Files
+はじめに
 ====
+## 環境
+    macOS
+    homebrew インストール済み
 
-## Usage
-### git clone
-	git clone git@github.com:kei-amishima/dotfiles.git ~/dotfiles
 
-### make .cache directory  
-	mkdir ~/.cache
+### make .cache directory
+    mkdir ~/.cache
 
 ### make Symbolic-link
-	ln -s ~/dotfiles/.vimrc ~/.vimrc
-	ln -s ~/dotfiles/.dein.toml ~/.dein.toml
-	ln -s ~/dotfiles/.dein_lazy.toml ~/.dein_lazy.toml
-	ln -s ~/dotfiles/.ctags ~/.ctags
+    ln -s ~/dotfiles/.vimrc ~/.vimrc
+    ln -s ~/dotfiles/.dein.toml ~/.dein.toml
+    ln -s ~/dotfiles/.dein_lazy.toml ~/.dein_lazy.toml
 
 ## Contribution
 
