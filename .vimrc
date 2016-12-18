@@ -60,7 +60,7 @@ set smartindent
 
 set visualbell t_vb=          " Beep音を消す
 
-syntax on                     " 構文毎に文字色を変化させる
+syntax enable                 " 構文毎に文字色を変化させる
 set t_Co=256                  " 256色を使う
 set list                      " 不可視文字を表示
 " 不可視文字の表示記号指定
@@ -87,6 +87,9 @@ nnoremap <S-j> }
 nnoremap <S-k> {
 nnoremap <S-l> $
 nnoremap m %
+nnoremap <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+
 nnoremap s <Nop>
 " ウィンドウの切り替え
 nnoremap sj <C-w>j
