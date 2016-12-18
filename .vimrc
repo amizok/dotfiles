@@ -45,12 +45,12 @@ set cmdheight=2               " メッセージ表示欄を2行確保
 set showmatch                 " 対応する括弧を強調表示
 set helpheight=999            " ヘルプを画面いっぱいに開く
 
-" 検索系
+" 検索系==========
 set hlsearch                  " 検索結果をハイライト
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-" タブの設定
+" タブの設定==========
 set expandtab                 " タブ入力を複数の空白入力に置き換える
 set tabstop=4                 " タブ文字の表示幅
 set shiftwidth=4              " Vimが挿入するインデントの幅
@@ -62,30 +62,44 @@ set visualbell t_vb=          " Beep音を消す
 
 syntax on                     " 構文毎に文字色を変化させる
 set t_Co=256                  " 256色を使う
-
 set list                      " 不可視文字を表示
 " 不可視文字の表示記号指定
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
-" スワップファイルを作成しない
-:set noswapfile
 
+" スワップファイル==========
+:set noswapfile " 作成しない
+
+" ステータス関連==========
+" ファイル情報表示
+set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
+
+" その他==========
 set backspace=indent,eol,start " deleteキーが効かない対応
 set whichwrap=b,s,h,l,<,>,[,]  " カーソルを行頭、行末で止まらないようにする
 set clipboard+=unnamed         " ヤンクをクリップボードへ送り込む
+set ttm=0                      " キーの反応を早く
 
-" ステータスにファイル情報表示
-set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
-
+"==========================================
 " マッピング
+"==========================================
+nnoremap <S-h> ^
+nnoremap <S-j> }
+nnoremap <S-k> {
+nnoremap <S-l> $
+nnoremap m %
 nnoremap s <Nop>
+" ウィンドウの切り替え
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+" ウィンドウの移動
 nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
+" タグの作成
+nnoremap st :<C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
 nnoremap sr <C-w>r
@@ -95,8 +109,6 @@ nnoremap so <C-w>_<C-w>|
 nnoremap sO <C-w>=
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
-nnoremap st :<C-u>tabnew<CR>
-nnoremap sT :<C-u>Unite tab<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
@@ -139,7 +151,7 @@ map <silent> <leader>l :TlistToggle<CR>
 " GNU GLOBAL(gtags)
 "--------------------------------
 "検索結果Windowを閉じる
-nmap <C-x> <C-w><C-w><C-w>q
+"nmap <C-m> <C-w><C-w><C-w>q
 "ソースコードの grep
 nmap <C-g> :Gtags -g
 "このファイルの関数一覧
@@ -149,9 +161,9 @@ nmap <C-j> :Gtags <C-r><C-w><CR>
 "カーソル以下の使用箇所を探す
 nmap <C-k> :Gtags -r <C-r><C-w><CR>
 "次の検索結果へジャンプする
-nmap <C-n> :cn<CR>
+"nmap <C-n> :cn<CR>
 "前の検索結果へジャンプする
-nmap <C-p> :cp<CR>
+"nmap <C-p> :cp<CR>
 
 "--------------------------------
 " unite.vim
