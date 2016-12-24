@@ -9,23 +9,11 @@ build = 'make'
 [[plugins]] #統合ユーザインターフェース
 repo = 'Shougo/unite.vim'
 
-[[plugins]] #vimからshellを起動
-repo = 'Shougo/vimshell.vim'
-
-[[plugins]] #the_silver_searcher(grepより早いgrep検索)
-repo = 'rking/ag.vim'
-
 [[plugins]] #ディレクトリをツリー表示
 repo = 'scrooloose/nerdtree'
 
 [[plugins]] #NEADTreeをタブ間で共有
 repo = 'jistr/vim-nerdtree-tabs'
-
-[[plugins]] #メソッド、変数、定数の一覧表示
-repo = 'vim-scripts/taglist.vim'
-
-[[plugins]] #gtags
-repo = 'vim-scripts/gtags.vim'
 
 [[plugins]] #Vimの中でGitを利用できる
 repo = 'tpope/vim-fugitive'
@@ -33,20 +21,26 @@ repo = 'tpope/vim-fugitive'
 [[plugins]] #左端にgitの差分を表示する
 repo = 'airblade/vim-gitgutter'
 
+[[plugins]] #gtags
+repo = 'vim-scripts/gtags.vim'
+
+[[plugins]] #ステータスラインの強化
+repo = 'itchyny/lightline.vim'
+
+[[plugins]] #インデントラインを表示
+repo = 'Yggdroot/indentLine'
+
+[[plugins]] #コメントアウト
+repo = 'tpope/vim-commentary'
+
+[[plugins]] #文章整形
+repo = 'h1mesuke/vim-alignta'
+
 [[plugins]] #vimのjkを早くする
 repo = 'rhysd/accelerated-jk'
 
 [[plugins]] #サブモードを定義
 repo = 'kana/vim-submode'
-
-[[plugins]] #インデントラインを表示
-repo = 'Yggdroot/indentLine'
-
-[[plugins]] #ステータスラインの強化
-repo = 'itchyny/lightline.vim'
-
-[[plugins]] #文章整形用プラグイン
-repo = 'h1mesuke/vim-alignta'
 
 [[plugins]] #help日本語化
 repo = 'vim-jp/vimdoc-ja'
