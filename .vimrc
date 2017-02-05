@@ -315,6 +315,10 @@ nmap <silent> <C-e> :NERDTreeToggle<CR>
 " map:
 " 開いてるファイルのパスを表示 (Show Path)
 cnoremap sp echo expand("%:p")<CR>
-" phpのerror_logを入力
-cnoremap log <ESC>oerror_log($var, __METHOD__."var".PHP_EOL);<ESC>
+
+"-------------------------------------------------------------------------------
+" PHP用設定
+" :makeでPHP構文チェック
+au FileType php setlocal makeprg=php\ -l\ %
+au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
