@@ -311,7 +311,7 @@ endfunction
 " NERDTreeに関する設定:
 
 " .ファイルの表示（1: 表示）
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 " ブックマークを表示 (1:表示)
 let g:NERDTreeShowBookmarks=1
 " 表示・非表示切り替え
