@@ -59,12 +59,18 @@ set helpheight=999
 
 " 検索結果をハイライト
 set hlsearch
+" 大文字小文字を区別しないで検索
+set ignorecase
+" 小文字の時は区別しない
+set smartcase
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "-------------------------------------------------------------------------------
 " 編集に関する設定:
 
+" 貼り付け時に余計なインデントが効かないようにする
+set paste
 " タブの画面上での幅
 set tabstop=4
 " 自動インデントでずれる幅
@@ -171,7 +177,7 @@ call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 " GNU GLOBAL(gtags)
 "" 検索結果Windowを閉じる
-nmap <C-q> <C-w><C-w><C-w>q
+nmap <C-m> <C-w><C-w><C-w>q
 "" ソースコードの grep
 nmap <C-g> :Gtags -g
 "" このファイルの関数一覧

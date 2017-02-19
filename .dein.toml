@@ -45,6 +45,9 @@ repo = 'kana/vim-submode'
 [[plugins]] #help日本語化
 repo = 'vim-jp/vimdoc-ja'
 
+[[plugins]] #smartyシンタックス
+repo = 'vim-scripts/smarty-syntax'
+
 #カラースキーマ
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
