@@ -177,7 +177,7 @@ call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 " GNU GLOBAL(gtags)
 "" 検索結果Windowを閉じる
-nmap <C-m> <C-w><C-w><C-w>q
+" nmap <C-q> <C-w><C-w><C-w>q
 "" ソースコードの grep
 nmap <C-g> :Gtags -g
 "" このファイルの関数一覧
