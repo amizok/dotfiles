@@ -70,7 +70,7 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " 編集に関する設定:
 
 " 貼り付け時に余計なインデントが効かないようにする
-set paste
+"set paste
 " タブの画面上での幅
 set tabstop=4
 " 自動インデントでずれる幅
