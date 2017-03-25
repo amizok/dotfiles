@@ -1,5 +1,7 @@
-"-------------------------------------------------------------------------------
-" dein.vim 
+"
+" dein.vim
+"
+
 if !&compatible
   set nocompatible
 endif
@@ -32,8 +34,9 @@ if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 
-"-------------------------------------------------------------------------------
-" 表示に関する設定:
+"
+" General settings
+"
 
 " ターミナルにファイル名を表示
 set title
@@ -92,7 +95,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 " ステータス行を常に表示
 set laststatus=2
 " メッセージ表示欄を2行確保
-set cmdheight=2
+set cmdheight=1
 " ファイル情報表示
 set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
 
