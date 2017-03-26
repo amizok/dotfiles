@@ -9,28 +9,28 @@ source ~/.zplug/init.zsh
 
 # (1) プラグインを定義する
 # zplug ''
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'zsh-users/zsh-completions'
-zplug 'zsh-users/zsh-syntax-highlighting'
-zplug 'b4b4r07/enhancd'
-# fzf-bin にホスティングされているので注意
-# またファイル名が fzf-bin となっているので file:fzf としてリネームする
-zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
-
-# ついでに tmux 用の拡張も入れるといい
-zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
-# zplug ''
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
+#zplug 'zsh-users/zsh-autosuggestions'
+#zplug 'zsh-users/zsh-completions'
+#zplug 'zsh-users/zsh-syntax-highlighting'
+#zplug 'b4b4r07/enhancd'
+## fzf-bin にホスティングされているので注意
+## またファイル名が fzf-bin となっているので file:fzf としてリネームする
+#zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+#
+## ついでに tmux 用の拡張も入れるといい
+#zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
+## zplug ''
+#
+## Install plugins if there are plugins that have not been installed
+#if ! zplug check --verbose; then
+#    printf "Install? [y/N]: "
+#    if read -q; then
+#        echo; zplug install
+#    fi
+#fi
+#
+## Then, source plugins and add commands to $PATH
+#zplug load --verbose
 
 ########################################
 
@@ -53,6 +53,11 @@ SAVEHIST=1000000
 PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
 %# "
 
+#
+# Editors
+#
+export EDITOR='vim'
+export VISUAL='vim'
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
