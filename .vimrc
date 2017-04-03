@@ -186,7 +186,7 @@ nmap <C-g> :Gtags -g
 "" このファイルの関数一覧
 nmap <C-l> :Gtags -f %<CR>
 "" カーソル以下の定義元を探す
-nmap <C-j> :Gtags <C-r><C-w><CR>
+nmap <C-j> :GtagsCursor<CR>
 "" カーソル以下の使用箇所を探す
 nmap <C-k> :Gtags -r <C-r><C-w><CR>
 "" 次の検索結果へジャンプする
