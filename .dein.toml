@@ -21,6 +21,9 @@ repo = 'tpope/vim-fugitive'
 [[plugins]] #左端にgitの差分を表示する
 repo = 'airblade/vim-gitgutter'
 
+[[plugins]] #xdebug
+repo = 'joonty/vdebug'
+
 [[plugins]] #gtags
 repo = 'vim-scripts/gtags.vim'
 

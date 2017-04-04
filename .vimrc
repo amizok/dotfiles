@@ -310,6 +310,13 @@ function! LightLineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+"--------------------------------
+" vdebug
+"--------------------------------
+if filereadable(expand('~/dotfiles/.vim/plugin_setting/vdebug.vim'))
+source ~/dotfiles/.vim/plugin_setting/vdebug.vim
+endif
+
 "-------------------------------------------------------------------------------
 " NERDTreeに関する設定:
 
