@@ -330,7 +330,8 @@ nmap <silent> <C-e> :NERDTreeToggle<CR>
 "-------------------------------------------------------------------------------
 " map:
 " 開いてるファイルのパスを表示 (Show Path)
-cnoremap sp echo expand("%:p")<CR>
+" cnoremap sp echo expand("%:p")<CR>
+" command! Todo edit ~/Documents/Work/Memo/todo.txt
 
 "-------------------------------------------------------------------------------
 " PHP用設定

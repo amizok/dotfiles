@@ -1,7 +1,7 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 ########################################
 # プラグイン管理 zplug
