@@ -2,6 +2,7 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 ########################################
 # プラグイン管理 zplug
@@ -10,8 +11,8 @@ source ~/.zplug/init.zsh
 # (1) プラグインを定義する
 # zplug ''
 #zplug 'zsh-users/zsh-autosuggestions'
-#zplug 'zsh-users/zsh-completions'
-#zplug 'zsh-users/zsh-syntax-highlighting'
+zplug 'zsh-users/zsh-completions'
+zplug 'zsh-users/zsh-syntax-highlighting'
 #zplug 'b4b4r07/enhancd'
 ## fzf-bin にホスティングされているので注意
 ## またファイル名が fzf-bin となっているので file:fzf としてリネームする
@@ -21,16 +22,16 @@ source ~/.zplug/init.zsh
 #zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
 ## zplug ''
 #
-## Install plugins if there are plugins that have not been installed
-#if ! zplug check --verbose; then
-#    printf "Install? [y/N]: "
-#    if read -q; then
-#        echo; zplug install
-#    fi
-#fi
-#
-## Then, source plugins and add commands to $PATH
-#zplug load --verbose
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
 
 ########################################
 
@@ -135,6 +136,7 @@ alias -g L='| less'
 alias -g G='| grep'
 
 alias vi='vim'
+alias grep='grep --color'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # C で標準出力をクリップボードにコピーする
