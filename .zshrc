@@ -9,19 +9,9 @@ export PATH="/usr/local/sbin:$PATH"
 source ~/.zplug/init.zsh
 
 # (1) プラグインを定義する
-# zplug ''
-#zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
-#zplug 'b4b4r07/enhancd'
-## fzf-bin にホスティングされているので注意
-## またファイル名が fzf-bin となっているので file:fzf としてリネームする
-#zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
-#
-## ついでに tmux 用の拡張も入れるといい
-#zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
-## zplug ''
-#
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -48,8 +38,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 # プロンプト
-# 1行表示
-# PROMPT="%~ %# "
 # 2行表示
 PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
 %# "
@@ -72,10 +60,10 @@ zstyle ':zle:*' word-style unspecified
 ########################################
 # 補完
 #for zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)# 補完機能を有効にする
+fpath=(/usr/local/share/zsh-completions $fpath)
 
-autoload -Uz compinit
-compinit
+autoload -U compinit
+compinit -d ~/dotfiles/zsh/compdump
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -166,3 +154,12 @@ case ${OSTYPE} in
         ;;
 esac
 
+# .zshrcが更新された場合は自動コンパイル
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+    zcompile ~/.zshrc
+fi
+
+# profiling
+if (which zprof > /dev/null) ;then
+  zprof | less
+fi
