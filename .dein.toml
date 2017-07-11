@@ -1,4 +1,5 @@
-# 基本 github.com のレポジトリーを指定するだけ
+# 基本 github.com のレポジトリを指定するだけ
+
 [[plugins]] #プラグインマネージャー
 repo = 'Shougo/dein.vim'
 
@@ -15,14 +16,14 @@ repo = 'scrooloose/nerdtree'
 [[plugins]] #NEADTreeをタブ間で共有
 repo = 'jistr/vim-nerdtree-tabs'
 
+[[plugins]] #ファイルの構文エラーチェック
+repo = 'vim-syntastic/syntastic'
+
 [[plugins]] #Vimの中でGitを利用できる
 repo = 'tpope/vim-fugitive'
 
 [[plugins]] #左端にgitの差分を表示する
 repo = 'airblade/vim-gitgutter'
-
-[[plugins]] #xdebug
-repo = 'joonty/vdebug'
 
 [[plugins]] #gtags
 repo = 'vim-scripts/gtags.vim'
@@ -47,6 +48,9 @@ repo = 'kana/vim-submode'
 
 [[plugins]] #help日本語化
 repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]] #xdebug
+repo = 'joonty/vdebug'
 
 [[plugins]] #smartyシンタックス
 repo = 'vim-scripts/smarty-syntax'

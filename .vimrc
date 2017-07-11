@@ -38,6 +38,8 @@ endif
 " General settings
 "
 
+" 文字コード
+set encoding=utf-8
 " ターミナルにファイル名を表示
 set title
 " 行番号を表示する
@@ -89,6 +91,7 @@ set smartindent
 " カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 
+set ambiwidth=double
 "-------------------------------------------------------------------------------
 " ステータスに関する設定:
 

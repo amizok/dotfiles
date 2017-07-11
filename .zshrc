@@ -8,7 +8,7 @@ export PATH="/usr/local/sbin:$PATH"
 # プラグイン管理 zplug
 source ~/.zplug/init.zsh
 
-# (1) プラグインを定義する
+# プラグインを定義
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 
@@ -60,10 +60,13 @@ zstyle ':zle:*' word-style unspecified
 ########################################
 # 補完
 #for zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 
-autoload -U compinit
-compinit -d ~/dotfiles/zsh/compdump
+# zplugから呼び出されているため不要
+# autoload -U compinit
+# compinit -d ~/dotfiles/zsh/compdump
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
