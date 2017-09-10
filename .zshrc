@@ -1,8 +1,15 @@
-########################################
-# 環境変数
+#
+# zshrc
+#
+
+# Exports {{{
 export LANG=ja_JP.UTF-8
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$PATH"
+export GREP_OPTIONS='--color=auto'
+export EDITOR='vim'
+export TERM="screen-256color"
+# }}}
+
 
 ########################################
 # プラグイン管理 zplug
@@ -41,12 +48,6 @@ SAVEHIST=1000000
 # 2行表示
 PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
 %# "
-
-#
-# Editors
-#
-export EDITOR='vim'
-export VISUAL='vim'
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -127,7 +128,6 @@ alias -g L='| less'
 alias -g G='| grep'
 
 alias vi='vim'
-alias grep='grep --color'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
 
 # C で標準出力をクリップボードにコピーする
@@ -158,8 +158,8 @@ case ${OSTYPE} in
 esac
 
 # .zshrcが更新された場合は自動コンパイル
-if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
-    zcompile ~/.zshrc
+if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
+    zcompile $HOME/.zshrc
 fi
 
 # profiling
