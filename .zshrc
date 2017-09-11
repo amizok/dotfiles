@@ -16,7 +16,7 @@ export TERM="screen-256color"
 source ~/.zplug/init.zsh
 
 # プラグインを定義
-zplug 'zsh-users/zsh-completions'
+#zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 
 # Install plugins if there are plugins that have not been installed

@@ -106,7 +106,7 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 "-------------------------------------------------------------------------------
 " ファイル操作に関する設定:
 
-" バックアップファイル
+" バックアップファイル {{{
 "" 有効化
 set backup
 "" 出力先
@@ -121,6 +121,7 @@ set directory=~/.vim/.swap
 set undofile
 "" 出力先
 set undodir=~/.vim/.undo
+" }}}
 
 "-------------------------------------------------------------------------------
 " その他
@@ -169,8 +170,10 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 nnoremap Y y$
+" 折りたたみ
 set foldmethod=marker
 au FileType vim setlocal foldmethod=marker
+
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
 call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
@@ -251,75 +254,15 @@ nmap k <Plug>(accelerated_jk_gk)
 "--------------------------------
 " lightline.vim
 "--------------------------------
-let g:lightline = {
-     \ 'colorscheme': 'default',
-     \ 'active': {
-     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-     \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-     \ },
-     \ 'component_function': {
-     \   'fugitive': 'LightLineFugitive',
-     \   'filename': 'LightLineFilename',
-     \   'fileformat': 'LightLineFileformat',
-     \   'filetype': 'LightLineFiletype',
-     \   'fileencoding': 'LightLineFileencoding',
-     \   'mode': 'LightLineMode',
-     \   'ctrlpmark': 'CtrlPMark',
-     \ },
-     \ 'component_expand': {
-     \   'syntastic': 'SyntasticStatuslineFlag',
-     \ },
-     \ 'component_type': {
-     \   'syntastic': 'error',
-     \ },
-     \ 'subseparator': { 'left': '|', 'right': '|' }
-     \ }
-function! LightLineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! LightLineFilename()
-  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
-  else
-    return ''
-  endif
-endfunction
-
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
+if filereadable(expand('~/dotfiles/.vim/plugin/lightline.vim'))
+    source ~/dotfiles/.vim/plugin/lightline.vim
+endif
 
 "--------------------------------
 " vdebug
 "--------------------------------
-if filereadable(expand('~/dotfiles/.vim/plugin_setting/vdebug.vim'))
-source ~/dotfiles/.vim/plugin_setting/vdebug.vim
+if filereadable(expand('~/dotfiles/.vim/plugin/vdebug.vim'))
+    source ~/dotfiles/.vim/plugin/vdebug.vim
 endif
 
 "-------------------------------------------------------------------------------
