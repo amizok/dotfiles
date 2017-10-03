@@ -8,6 +8,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$PATH"
 export GREP_OPTIONS='--color=auto'
 export EDITOR='vim'
 export TERM="screen-256color"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # }}}
 
 
