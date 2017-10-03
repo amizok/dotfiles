@@ -55,6 +55,9 @@ repo = 'joonty/vdebug'
 [[plugins]] #smartyシンタックス
 repo = 'vim-scripts/smarty-syntax'
 
+[[plugins]] #css-color
+repo = 'ap/vim-css-color'
+
 #カラースキーマ
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
