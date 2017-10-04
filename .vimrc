@@ -184,9 +184,24 @@ call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 "-------------------------------------------------------------------------------
-" 各プラグインに関する設定:
+" Change colourscheme when diffing
+"-------------------------------------------------------------------------------
+fun! SetDiffColors()
+  hi DiffAdd    cterm=none ctermbg=22    ctermfg=Green
+  hi DiffDelete cterm=none ctermfg=7     ctermbg=52
+  hi DiffChange cterm=none ctermfg=white ctermbg=none
+  hi DiffText   cterm=none ctermfg=Green ctermbg=22
+endfun
+autocmd FilterWritePre * call SetDiffColors()
 
+
+"-------------------------------------------------------------------------------
+" 各プラグインに関する設定:
+"-------------------------------------------------------------------------------
+
+"--------------------------------
 " GNU GLOBAL(gtags)
+"--------------------------------
 "" 検索結果Windowを閉じる
 " nmap <C-q> <C-w><C-w><C-w>q
 "" ソースコードの grep
@@ -202,7 +217,9 @@ nmap <C-n> :cn<CR>
 "" 前の検索結果へジャンプする
 nmap <C-p> :cp<CR>
 
+"--------------------------------
 " unite.vim
+"--------------------------------
 "" insert modeで開始
 let g:unite_enable_start_insert = 1
 "" バッファ一覧
@@ -232,13 +249,17 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 "" grep検索結果の再呼出
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
+"--------------------------------
 " vim-fugitive
+"--------------------------------
 "" grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
 "" ステータス行に現在のgitブランチを表示する
 set statusline+=%{fugitive#statusline()}
 
+"--------------------------------
 " vim-gitgutter
+"--------------------------------
 "" 差分表示をnミリ秒に設定
 set updatetime=50
 
@@ -246,7 +267,9 @@ let g:gitgutter_sign_modified = '■'
 let g:gitgutter_sign_removed  = '-'
 let g:gitgutter_max_signs = 500
 
+"--------------------------------
 " accelerated-jk
+"--------------------------------
 "" j/kによる移動を速くする
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
@@ -265,21 +288,15 @@ if filereadable(expand('~/dotfiles/.vim/plugin/vdebug.vim'))
     source ~/dotfiles/.vim/plugin/vdebug.vim
 endif
 
-"-------------------------------------------------------------------------------
-" NERDTreeに関する設定:
-
+"--------------------------------
+" NERDTree
+"--------------------------------
 " .ファイルの表示（1: 表示）
 let NERDTreeShowHidden=0
 " ブックマークを表示 (1:表示)
 let g:NERDTreeShowBookmarks=1
 " 表示・非表示切り替え
 nmap <silent> <C-e> :NERDTreeToggle<CR>
-
-"-------------------------------------------------------------------------------
-" map:
-" 開いてるファイルのパスを表示 (Show Path)
-" cnoremap sp echo expand("%:p")<CR>
-" command! Todo edit ~/Documents/Work/Memo/todo.txt
 
 "-------------------------------------------------------------------------------
 " PHP用設定
