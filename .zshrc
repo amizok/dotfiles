@@ -61,14 +61,9 @@ zstyle ':zle:*' word-style unspecified
 
 ########################################
 # 補完
-#for zsh-completions
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
-
-# zplugから呼び出されているため不要
-# autoload -U compinit
-# compinit -d ~/dotfiles/zsh/compdump
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -116,11 +111,9 @@ setopt nonomatch
 bindkey '^R' history-incremental-pattern-search-backward
 
 
-########################################
-# エイリアス
+# Alias {{{
 
 alias mkdir='mkdir -p'
-
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
@@ -130,6 +123,7 @@ alias -g G='| grep'
 
 alias vi='vim'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
+# }}}
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
@@ -144,26 +138,47 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
-########################################
+# ------------------------------------------------------------------------
+# anyenv
+# ------------------------------------------------------------------------
+if [ -d $HOME/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+fi
+
+# ------------------------------------------------------------------------
 # OS 別の設定
+# ------------------------------------------------------------------------
 case ${OSTYPE} in
     darwin*)
-        #Mac用の設定
+        # Mac
         export CLICOLOR=1
         alias ls='ls -G -F'
         ;;
     linux*)
-        #Linux用の設定
+        # Linux
         alias ls='ls -F --color=auto'
         ;;
 esac
 
-# .zshrcが更新された場合は自動コンパイル
+# ------------------------------------------------------------------------
+# .zshrc auto compile
+# ------------------------------------------------------------------------
 if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
     zcompile $HOME/.zshrc
 fi
 
+# ------------------------------------------------------------------------
 # profiling
+# ------------------------------------------------------------------------
 if (which zprof > /dev/null) ;then
   zprof | less
 fi
+
+# ------------------------------------------------------------------------
+# Pseudo zlogin on each login
+# ------------------------------------------------------------------------
+# echo "${fg[${ZSH_HOST_COLOR}]}$(uptime)"
+# echo "Kernel: $(uname -r) ($(uname -v))${reset_color}"
+# echo ""
+# [ -f /usr/bin/fortune ] && fortune "${ZSH_FORTUNE_ARG:-}" && echo ""
