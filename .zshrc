@@ -167,3 +167,13 @@ fi
 if (which zprof > /dev/null) ;then
   zprof | less
 fi
+
+# anyenv
+if [ -d $HOME/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    for D in `ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+    eval "$(anyenv init -)"
+fi
