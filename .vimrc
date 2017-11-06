@@ -170,6 +170,8 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 nnoremap Y y$
+nnoremap sf :<C-u>copen<CR>
+nnoremap sc :<C-u>cclose<CR>
 " 折りたたみ
 set foldmethod=marker
 au FileType vim setlocal foldmethod=marker
