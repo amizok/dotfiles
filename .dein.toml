@@ -1,5 +1,3 @@
-# 基本 github.com のレポジトリを指定するだけ
-
 [[plugins]] #プラグインマネージャー
 repo = 'Shougo/dein.vim'
 
@@ -16,8 +14,11 @@ repo = 'scrooloose/nerdtree'
 [[plugins]] #NEADTreeをタブ間で共有
 repo = 'jistr/vim-nerdtree-tabs'
 
-[[plugins]] #ファイルの構文エラーチェック
-repo = 'vim-syntastic/syntastic'
+[[plugins]] #fzf path for homebrew
+repo = '/usr/local/opt/fzf'
+
+[[plugins]] #fzf
+repo = 'junegunn/fzf.vim'
 
 [[plugins]] #Vimの中でGitを利用できる
 repo = 'tpope/vim-fugitive'
@@ -27,6 +28,9 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]] #gtags
 repo = 'vim-scripts/gtags.vim'
+
+[[plugins]] #ファイルの構文エラーチェック
+repo = 'vim-syntastic/syntastic'
 
 [[plugins]] #ステータスラインの強化
 repo = 'itchyny/lightline.vim'
@@ -58,7 +62,9 @@ repo = 'vim-scripts/smarty-syntax'
 [[plugins]] #css-color
 repo = 'ap/vim-css-color'
 
-#カラースキーマ
+#==================================
+# ColorScheme
+#==================================
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
 
