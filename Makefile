@@ -17,14 +17,21 @@ deploy: ## Create symlink to home directory
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 test: ## test script
+	@echo 'dot files list'
 	@echo $(DOTFILES)
-	@echo "hello"
+	@echo 'deploy dry run'
+	@$(foreach val, $(DOTFILES), echo $(abspath $(val)) "->" $(HOME)/$(val);)
 
 update: ## Fetch changes for this repo
 	git pull origin master
 	git submodule init
 	git submodule update
 	git submodule foreach git pull origin master
+
+clean: ## Remove the dot files and this repo
+	@echo 'Remove dot files in your home directory...'
+	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+	-rm -rf $(DOTPATH)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
