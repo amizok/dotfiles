@@ -44,8 +44,6 @@ set encoding=utf-8
 set title
 " 行番号を表示する
 set number
-" カーソル行の背景色を変える
-set cursorline
 " 不可視文字を表示
 set list
 " 不可視文字の表示記号指定
@@ -305,7 +303,7 @@ let NERDTreeShowHidden=0
 " ブックマークを表示 (1:表示)
 let g:NERDTreeShowBookmarks=1
 " 表示・非表示切り替え
-nmap <silent> <C-e> :NERDTreeToggle<CR>
+nmap <silent> <C-e> :NERDTreeTabsToggle<CR>
 
 "-------------------------------------------------------------------------------
 " PHP用設定
