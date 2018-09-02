@@ -51,7 +51,7 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 " 対応する括弧を強調表示
 set showmatch
 " 構文毎に文字色を変化させる
-syntax enable
+syntax on
 " 256色を使う
 set t_Co=256
 " ヘルプを画面いっぱいに開く
