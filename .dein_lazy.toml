@@ -1,0 +1,6 @@
+# [[plugins]] #統合ユーザインターフェース
+repo = 'Shougo/unite.vim'
+
+[[plugins]] #css-color
+repo = 'ap/vim-css-color'
+

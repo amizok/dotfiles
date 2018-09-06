@@ -5,9 +5,6 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-[[plugins]] #統合ユーザインターフェース
-repo = 'Shougo/unite.vim'
-
 [[plugins]] #ディレクトリをツリー表示
 repo = 'scrooloose/nerdtree'
 
@@ -50,17 +47,11 @@ repo = 'rhysd/accelerated-jk'
 [[plugins]] #サブモードを定義
 repo = 'kana/vim-submode'
 
-[[plugins]] #help日本語化
-repo = 'vim-jp/vimdoc-ja'
-
 [[plugins]] #xdebug
 repo = 'joonty/vdebug'
 
 [[plugins]] #smartyシンタックス
 repo = 'vim-scripts/smarty-syntax'
-
-[[plugins]] #css-color
-repo = 'ap/vim-css-color'
 
 #==================================
 # ColorScheme

@@ -51,7 +51,7 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 " 対応する括弧を強調表示
 set showmatch
 " 構文毎に文字色を変化させる
-syntax enable
+syntax on
 " 256色を使う
 set t_Co=256
 " ヘルプを画面いっぱいに開く
@@ -165,8 +165,6 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
-nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
-nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 nnoremap Y y$
 nnoremap sf :<C-u>copen<CR>
 nnoremap sc :<C-u>cclose<CR>
