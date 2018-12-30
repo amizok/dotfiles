@@ -108,17 +108,17 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 "" 有効化
 set backup
 "" 出力先
-set backupdir=~/dotfiles/.vim/.backup
+set backupdir=~/.vim/.backup
 " スワップファイル
 "" 有効化
 set swapfile
 "" 出力先
-set directory=~/dotfiles/.vim/.swap
+set directory=~/.vim/.swap
 " UNDOファイル
 "" 有効化
 set undofile
 "" 出力先
-set undodir=~/dotfiles/.vim/.undo
+set undodir=~/.vim/.undo
 " }}}
 
 "-------------------------------------------------------------------------------
