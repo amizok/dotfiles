@@ -52,6 +52,8 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set showmatch
 " 構文毎に文字色を変化させる
 syntax on
+" bashのシンタックスもきれいに
+let g:is_bash = 1
 " 256色を使う
 set t_Co=256
 " ヘルプを画面いっぱいに開く
@@ -253,6 +255,11 @@ if executable('hw')
     let g:unite_source_grep_default_opts = '--no-group --no-color'
     let g:unite_source_grep_recursive_opt = ''
 endif
+"--------------------------------
+" fzf
+"--------------------------------
+nnoremap <silent> <Space>f  :<C-u>Files<CR>
+nnoremap <silent> <Space>b  :<C-u>Buffers<CR>
 
 "--------------------------------
 " vim-fugitive
