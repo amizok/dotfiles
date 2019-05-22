@@ -275,7 +275,7 @@ set statusline+=%{fugitive#statusline()}
 "" 差分表示をnミリ秒に設定
 set updatetime=50
 
-let g:gitgutter_sign_modified = '■'
+let g:gitgutter_sign_modified = 'M'
 let g:gitgutter_sign_removed  = '-'
 let g:gitgutter_max_signs = 500
 
