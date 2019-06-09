@@ -52,6 +52,8 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set showmatch
 " 構文毎に文字色を変化させる
 syntax on
+" bashのシンタックスもきれいに
+let g:is_bash = 1
 " 256色を使う
 set t_Co=256
 " ヘルプを画面いっぱいに開く
@@ -214,6 +216,12 @@ nmap <C-k> :Gtags -r <C-r><C-w><CR>
 nmap <C-n> :cn<CR>
 "" 前の検索結果へジャンプする
 nmap <C-p> :cp<CR>
+
+"--------------------------------
+" fzf
+"--------------------------------
+nnoremap <silent> <Space>f  :<C-u>Files<CR>
+nnoremap <silent> <Space>b  :<C-u>Buffers<CR>
 
 "--------------------------------
 " vim-fugitive
