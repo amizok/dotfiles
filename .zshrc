@@ -212,7 +212,7 @@ export PATH=$PATH:/Users/kei/.anyenv/envs/nodenv/versions/11.12.0/bin
 # ------------------------------------------------------------------------
 fzf_ssh_inline() {
   local found
-  found="$(grep "^Host" $HOME/.ssh/*config | fzf --exact --no-sort --reverse)"
+  found="$(grep "^Host" $HOME/.ssh/*config | grep -v \* | fzf --exact --no-sort --reverse)"
 
   if [[ $? -ne 0 ]] || [[ "$found" =~ "^[:blank:]*$" ]]; then
     return 1
@@ -220,6 +220,7 @@ fzf_ssh_inline() {
 
   BUFFER="ssh $(echo "$found" | awk '{print $2}')"
   zle clear-screen
+  zle vi-end-of-line
 }
 
 zle -N fzf_ssh_inline

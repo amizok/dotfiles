@@ -220,7 +220,7 @@ nmap <C-p> :cp<CR>
 "--------------------------------
 " fzf
 "--------------------------------
-nnoremap <silent> <Space>f  :<C-u>Files<CR>
+nnoremap <silent> <Space>f  :<C-u>GFiles<CR>
 nnoremap <silent> <Space>b  :<C-u>Buffers<CR>
 
 "--------------------------------
