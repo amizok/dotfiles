@@ -21,7 +21,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 source ~/.zplug/init.zsh
 
 # プラグインを定義
-# zplug 'zsh-users/zsh-completions'
+zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 
 # Install plugins if there are plugins that have not been installed
@@ -143,15 +143,6 @@ esac
 alias -g L='| less'
 alias -g G='| grep'
 
-
-# ------------------------------------------------------------------------
-# .zshrc auto compile
-# ------------------------------------------------------------------------
-if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
-    zcompile $HOME/.zshrc
-fi
-
-
 # ------------------------------------------------------------------------
 # profiling
 # ------------------------------------------------------------------------
@@ -193,19 +184,9 @@ fi
 
 
 # ------------------------------------------------------------------------
-# anyenv
+# anyenv for homebrew
 # ------------------------------------------------------------------------
-if [ -d $HOME/.anyenv ] ; then
-    export PATH="$HOME/.anyenv/bin:$PATH"
-    for D in `ls $HOME/.anyenv/envs`
-    do
-        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-    done
-    eval "$(anyenv init -)"
-fi
-
-
-export PATH=$PATH:/Users/kei/.anyenv/envs/nodenv/versions/11.12.0/bin
+eval "$(anyenv init -)"
 
 # ------------------------------------------------------------------------
 # fzf functions
