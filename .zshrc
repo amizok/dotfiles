@@ -25,7 +25,8 @@ zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+#if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -208,3 +209,16 @@ zle -N fzf_ssh_inline
 
 # キーバインド (ここでは Ctrl+T として設定)
 bindkey '^T' fzf_ssh_inline
+
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;91m") \
+        LESS_TERMCAP_md=$(printf "\e[1;91m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+
