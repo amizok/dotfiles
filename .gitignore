@@ -2,6 +2,7 @@
 /.vim/.backup/.gitkeep
 /.vim/.swap/.gitkeep
 /.vim/.undo/.gitkeep
+!.vim/plugin
 /zsh/*
 !/zsh/.gitkeep
 

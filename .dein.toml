@@ -33,7 +33,7 @@ repo = 'vim-syntastic/syntastic'
 repo = 'itchyny/lightline.vim'
 
 [[plugins]] #インデントラインを表示
-repo = 'Yggdroot/indentLine'
+repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]] #コメントアウト
 repo = 'tpope/vim-commentary'
