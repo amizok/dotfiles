@@ -86,7 +86,6 @@ hook_add = '''
     " Use 'select' instead of 'edit' for default 'open' action
     nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
     set nonumber
-    highlight! link SignColumn LineNr
   endfunction
 
   augroup fern-custom
