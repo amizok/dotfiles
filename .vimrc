@@ -12,6 +12,7 @@ augroup MyAutoCmd
 augroup END
 
 " dein settings -----------------
+let g:dein#auto_recache = 1
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -196,39 +197,35 @@ autocmd FilterWritePre * call SetDiffColors()
 
 
 "-------------------------------------------------------------------------------
-" 各プラグインに関する設定:
+" Plugin Settings
 "-------------------------------------------------------------------------------
-
 "--------------------------------
-" GNU GLOBAL(gtags)
+" Language Server Protocol
 "--------------------------------
-"" 検索結果Windowを閉じる
-" nmap <C-q> <C-w><C-w><C-w>q
-"" ソースコードの grep
-nmap <C-g> :Gtags -g
-"" このファイルの関数一覧
-nmap <C-l> :Gtags -f %<CR>
-"" カーソル以下の定義元を探す
-nmap <C-j> :GtagsCursor<CR>
-"" カーソル以下の使用箇所を探す
-nmap <C-k> :Gtags -r <C-r><C-w><CR>
-"" 次の検索結果へジャンプする
-nmap <C-n> :cn<CR>
-"" 前の検索結果へジャンプする
-nmap <C-p> :cp<CR>
+nmap <C-j> :LspDefinition<CR>
+nmap <C-h> :LspHover<CR>
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
 
 "--------------------------------
 " fzf
 "--------------------------------
 nnoremap <silent> <Space>f  :<C-u>GFiles<CR>
 nnoremap <silent> <Space>b  :<C-u>Buffers<CR>
+nnoremap <silent> <Space>g  :<C-u>Rg<Space>
+command! -bang -nargs=* Rg
+\ call fzf#vim#grep(
+\ 'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
+\ <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+\ : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+\ <bang>0)
 
 "--------------------------------
 " vim-fugitive
 "--------------------------------
-"" grep検索の実行後にQuickFix Listを表示する
+" grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
-"" ステータス行に現在のgitブランチを表示する
+" ステータス行に現在のgitブランチを表示する
 set statusline+=%{fugitive#statusline()}
 
 "--------------------------------
@@ -238,16 +235,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=236
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=237
-
-"--------------------------------
-" accelerated-jk
-"--------------------------------
-"" j/kによる移動を速くする
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
+let g:indent_guides_exclude_filetypes = ['help', 'fern']
 
 "--------------------------------
 " lightline.vim
@@ -255,23 +243,6 @@ nmap k <Plug>(accelerated_jk_gk)
 if filereadable(expand('~/dotfiles/.vim/plugin/lightline.vim'))
     source ~/dotfiles/.vim/plugin/lightline.vim
 endif
-
-"--------------------------------
-" vdebug
-"--------------------------------
-if filereadable(expand('~/dotfiles/.vim/plugin/vdebug.vim'))
-    source ~/dotfiles/.vim/plugin/vdebug.vim
-endif
-
-"--------------------------------
-" NERDTree
-"--------------------------------
-" .ファイルの表示（1: 表示）
-let NERDTreeShowHidden=0
-" ブックマークを表示 (1:表示)
-let g:NERDTreeShowBookmarks=1
-" 表示・非表示切り替え
-nmap <silent> <C-e> :NERDTreeTabsToggle<CR>
 
 "-------------------------------------------------------------------------------
 " PHP用設定

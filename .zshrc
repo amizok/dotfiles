@@ -18,6 +18,11 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # Plugin Manager
 # ------------------------------------------------------------------------
 # zplug
+if [ ! -e ~/.zplug/init.zsh ]; then
+    echo "downloading zplug."
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    echo "done."
+fi
 source ~/.zplug/init.zsh
 
 # プラグインを定義

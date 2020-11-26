@@ -1,33 +1,56 @@
 [[plugins]] #プラグインマネージャー
 repo = 'Shougo/dein.vim'
 
-[[plugins]] #vimで非同期処理ができるようになる
+[[plugins]] #非同期処理
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-[[plugins]] #ディレクトリをツリー表示
-repo = 'scrooloose/nerdtree'
+########## deoplete ##########
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_ignore_case = 1
+'''
 
-[[plugins]] #NEADTreeをタブ間で共有
-repo = 'jistr/vim-nerdtree-tabs'
+# deoplete on vim requires plugins
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
 
+######## Language Server Protocol ##########
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+
+########## fzf ##########
 [[plugins]] #fzf path for homebrew
 repo = '/usr/local/opt/fzf'
-
 [[plugins]] #fzf
 repo = 'junegunn/fzf.vim'
 
-[[plugins]] #Vimの中でGitコマンドを利用
+########## Git ##########
+[[plugins]]
 repo = 'tpope/vim-fugitive'
-
 [[plugins]] #Gitの差分を表示
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  set updatetime=100
+'''
 
-[[plugins]] #global gtags
-repo = 'vim-scripts/gtags.vim'
-
-[[plugins]] #構文チェック
-repo = 'vim-syntastic/syntastic'
+########## VIM ##########
+#[[plugins]] #構文チェック
+#repo = 'vim-syntastic/syntastic'
 
 [[plugins]] #ステータスラインの強化
 repo = 'itchyny/lightline.vim'
@@ -35,29 +58,54 @@ repo = 'itchyny/lightline.vim'
 [[plugins]] #インデントラインを表示
 repo = 'nathanaelkane/vim-indent-guides'
 
-[[plugins]] #コメントアウト
-repo = 'tpope/vim-commentary'
-
 [[plugins]] #文章整形
 repo = 'h1mesuke/vim-alignta'
 
 [[plugins]] #vimのjkを高速化
 repo = 'rhysd/accelerated-jk'
+hook_add = '''
+  nmap j <Plug>(accelerated_jk_gj)
+  nmap k <Plug>(accelerated_jk_gk)
+'''
 
 [[plugins]] #サブモードを定義
 repo = 'kana/vim-submode'
 
-[[plugins]] #xdebug
-repo = 'joonty/vdebug'
+########## Fern.vim ##########
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+  nmap <silent> <C-e> :Fern . -drawer -toggle<CR>
+  nmap <silent> <C-i> <Plug>(fern-action-hidden:toggle)
 
-[[plugins]] #smartyシンタックス
-repo = 'vim-scripts/smarty-syntax'
+  let g:fern#renderer#default#leaf_symbol='   '
+  let g:fern#renderer#default#collapsed_symbol=' ▸ '
+  let g:fern#renderer#default#expanded_symbol=' ▾ '
+
+  function! s:init_fern() abort
+    " Use 'select' instead of 'edit' for default 'open' action
+    nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
+    set nonumber
+    highlight! link SignColumn LineNr
+  endfunction
+
+  augroup fern-custom
+    autocmd! *
+    autocmd FileType fern call s:init_fern()
+  augroup END
+'''
+
+######### Syntax ##########
+[[plugins]] # TOML
+repo = 'cespare/vim-toml'
+
+##[[plugins]] # PHP smarty
+##repo = 'vim-scripts/smarty-syntax'
 
 #==================================
 # ColorScheme
 #==================================
 [[plugins]]
-#repo = 'w0ng/vim-hybrid'
 repo = 'brendonrapp/smyck-vim'
 
 # colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
@@ -65,5 +113,9 @@ repo = 'brendonrapp/smyck-vim'
 hook_add = '''
   set background=dark
   au MyAutoCmd VimEnter * nested colorscheme smyck
+  au MyAutoCmd VimEnter * nested highlight! link SignColumn LineNr
+  au MyAutoCmd VimEnter * nested highlight GitGutterAdd    ctermfg=2 ctermbg=235 guifg=#009900
+  au MyAutoCmd VimEnter * nested highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
+  au MyAutoCmd VimEnter * nested highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
 '''
 
