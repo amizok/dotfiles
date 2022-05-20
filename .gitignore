@@ -7,3 +7,5 @@
 !/zsh/.gitkeep
 
 .DS_Store
+/nvim/plugin/packer_compiled.lua
+!/nvim/plugin/.gitkeep
