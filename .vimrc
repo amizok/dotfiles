@@ -108,20 +108,20 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 " ファイル操作に関する設定:
 
 " バックアップファイル {{{
-"" 有効化
-set backup
-"" 出力先
-set backupdir=~/.vim/.backup
-" スワップファイル
-"" 有効化
-set swapfile
-"" 出力先
-set directory=~/.vim/.swap
-" UNDOファイル
-"" 有効化
-set undofile
-"" 出力先
-set undodir=~/.vim/.undo
+""" 有効化
+"set backup
+""" 出力先
+"set backupdir=~/.vim/.backup
+"" スワップファイル
+""" 有効化
+"set swapfile
+""" 出力先
+"set directory=~/.vim/.swap
+"" UNDOファイル
+""" 有効化
+"set undofile
+""" 出力先
+"set undodir=~/.vim/.undo
 " }}}
 
 "-------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_exclude_filetypes = ['help', 'fern']
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 "--------------------------------
 " lightline.vim
@@ -250,3 +250,10 @@ endif
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
+" for Python
+if has('nvim')
+  let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
+  let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
+  let g:ruby_host_prog = $NEOVIM_RUBY_HOST
+  let g:node_host_prog = $NEOVIM_NODE_HOST
+endif

@@ -6,3 +6,4 @@
 /zsh/*
 !/zsh/.gitkeep
 
+.DS_Store
