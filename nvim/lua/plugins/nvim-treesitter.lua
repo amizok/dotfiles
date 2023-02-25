@@ -21,7 +21,7 @@ require('nvim-treesitter.configs').setup {
     -- the name of the parser)
     -- list of language that will be disabled
     -- disable = { "c", "rust" },
-    disable = {"all"},
+    -- disable = {"all"},
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -34,5 +34,5 @@ require('nvim-treesitter.configs').setup {
   indent = {
     enable = true, -- これを設定することでtree-sitterによるインデントを有効にできます
   },
-  yati = {enable = true},
+  yati = {enable = false},
 }

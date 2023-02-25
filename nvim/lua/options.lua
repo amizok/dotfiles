@@ -21,6 +21,13 @@ vim.opt.laststatus = 2
 vim.opt.cmdheight = 1
 vim.opt.ttm = 0
 
+-- Do not source the default filetype.vim
+vim.g.did_load_filetypes = 1
+
 -- color scheme
---cmd('colorscheme smyck')
-cmd('colorscheme onedark')
+-- cmd('colorscheme onedark')
+cmd('colorscheme nightfox')
+
+-- wsl only.
+-- lsp-serverをwindowsのユーザディレクトリにインストールする場合があるので指定する
+vim.cmd([[ let g:lsp_settings_extra_paths=['/mnt/c/Users/admin-dev'] ]])

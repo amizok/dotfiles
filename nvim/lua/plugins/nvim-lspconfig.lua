@@ -36,19 +36,53 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  'intelephense',
+  -- 'intelephense',
   --'rust_analyzer',
-  --'tsserver'
+  --'tspylsp'
+  'pylsp'
 }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    -- This will be the default in neovim 0.7+
-    flags = {debounce_text_changes = 150},
-    -- nvim-cmp
-    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
-end
+--for _, lsp in pairs(servers) do
+--  require('lspconfig')[lsp].setup {
+--    on_attach = on_attach,
+--    -- This will be the default in neovim 0.7+
+--    flags = {debounce_text_changes = 150},
+--    setting = {
+--        pylsp = {
+--            plugins = {
+--                pycodestyle = {
+--                    enabled = true,
+--                    ignore = {'E501'},
+--                    maxLineLength = 200
+--                },
+--                -- flake8 = {
+--                --     enabled = true,
+--                --     ignore = {'E501'},
+--                --     maxLineLength = 200
+--                -- }
+--            }
+--        }
+--    }
+--    -- nvim-cmp
+--    -- capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+--  }
+--end
+
+-- FIXME 直接lsp-serverを指定しないと上手く設定が反映しなかった
+require('lspconfig').pylsp.setup {
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    ignore = {'E501', 'W503', 'E731'},
+                    maxLineLength = 200
+                }
+            }
+        }
+    }
+}
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
+-- wsl only.
+-- lsp-serverをwindowsのユーザディレクトリにインストールする場合があるので指定する
+vim.cmd([[ let g:lsp_settings_extra_paths=['/mnt/c/Users/admin-dev'] ]])

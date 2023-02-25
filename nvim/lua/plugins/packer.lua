@@ -19,9 +19,17 @@ require('packer').startup(function()
 
   -- language server protocol
   use {
-    'williamboman/nvim-lsp-installer',
-    'neovim/nvim-lspconfig',
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
   }
+  -- use {
+  --   'williamboman/nvim-lsp-installer',
+  --   'neovim/nvim-lspconfig',
+  -- }
+
+  -- linter, formatter
+  use "jose-elias-alvarez/null-ls.nvim"
 
   -- tree-sitter
   use {
@@ -47,13 +55,6 @@ require('packer').startup(function()
   }
 
   -- git
-  -- use {
-  --   'TimUntersberger/neogit',
-  --   requires = {
-  --     'sindrets/diffview.nvim',
-  --     'nvim-lua/plenary.nvim'
-  --   }
-  -- }
   use {'lewis6991/gitsigns.nvim'}
 
   -- completion engine
@@ -70,11 +71,13 @@ require('packer').startup(function()
   use {'norcalli/nvim-colorizer.lua'}
 
   -- colorscheme
-  use {'brendonrapp/smyck-vim'}
+  -- use {'brendonrapp/smyck-vim'}
   use {'amizok/onedark.nvim'}
+  use {'sainnhe/sonokai'}
+  use {'rebelot/kanagawa.nvim'}
+  use {'edeneast/nightfox.nvim'}
 
   use {'junegunn/vim-easy-align'}
-               
 
   -- opt オプションを付けると遅延読み込みになります。
   -- この場合は opt だけで読み込む契機を指定していないため、
@@ -87,6 +90,9 @@ require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+
+  -- filetype
+  use("nathom/filetype.nvim")
 
   -- コマンドを叩いたときに読み込む。
   -- use{'rhysd/git-messenger.vim', opt = true, cmd = {'GitMessenger'}}
